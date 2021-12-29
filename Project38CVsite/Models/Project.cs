@@ -13,8 +13,10 @@ namespace Project38CVsite.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-
-        [Required]
         public virtual ICollection<ApplicationUser> Participants { get; set; }
+
+        public int ProjectManagerId { get; set; }
+        public ApplicationUser ProjectManager { get; set; }
+
     }
 }

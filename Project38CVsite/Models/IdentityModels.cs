@@ -21,8 +21,6 @@ namespace Project38CVsite.Models
         public string Skill { get; set; }
         public string Experience { get; set; }
         public bool IsPrivate { get; set; }
-
-        [Required]
         public virtual ICollection<Project> Projects { get; set; }
 
 
