@@ -79,6 +79,30 @@ namespace Project38CVsite.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Education")]
+        public string Education { get; set; }
+
+        [Required]
+        [Display(Name = "Skill")]
+        public string Skill { get; set; }
+
+        [Required]
+        [Display(Name = "Experience")]
+        public string Experience { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -109,4 +133,12 @@ namespace Project38CVsite.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class EditViewModel
+    {
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+    }
+    
 }

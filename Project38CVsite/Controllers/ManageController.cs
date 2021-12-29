@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +15,7 @@ namespace Project38CVsite.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -331,6 +334,47 @@ namespace Project38CVsite.Controllers
             }
 
             base.Dispose(disposing);
+        }
+
+
+        //
+        // GET: /Manage/ChangePassword
+        public ActionResult EditUser()
+        {
+            return View();
+        }
+
+        // Edit User Info
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public  async Task<ActionResult> EditUser( ApplicationUser model)
+        {
+
+            var userId = User.Identity.GetUserId();
+
+            var user = UserManager.FindByIdAsync(userId);
+
+            user.Result.FirstName = model.FirstName;
+            user.Result.LastName = model.LastName;
+            user.Result.Address = model.Address;
+            user.Result.Skill = model.Skill;
+            user.Result.Education = model.Education;
+            user.Result.Experience = model.Experience;
+            user.Result.IsPrivate = model.IsPrivate;
+
+
+            await UserManager.UpdateAsync(user.Result);
+
+            return RedirectToAction("Index");
+            /*
+            if (ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(user);
+            */
         }
 
 #region Helpers

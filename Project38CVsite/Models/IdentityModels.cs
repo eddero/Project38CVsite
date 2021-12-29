@@ -30,6 +30,7 @@ namespace Project38CVsite.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -39,5 +40,6 @@ namespace Project38CVsite.Models
         {
             return new ApplicationDbContext();
         }
+
     }
 }

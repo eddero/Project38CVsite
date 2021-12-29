@@ -83,4 +83,5 @@ namespace Project38CVsite.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
 }
