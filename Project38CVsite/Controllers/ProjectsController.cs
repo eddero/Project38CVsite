@@ -17,7 +17,8 @@ namespace Project38CVsite.Controllers
         // GET: Projects
         public ActionResult Index()
         {
-            return View(db.projects.ToList());
+            var projects = db.projects.Include(p => p.Manager);
+            return View(projects.ToList());
         }
 
         // GET: Projects/Details/5
@@ -27,7 +28,10 @@ namespace Project38CVsite.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project project = db.projects.Find(id);
+
+            var project = db.projects.Include(p => p.Manager)
+                            .FirstOrDefault(x => x.Id == id);
+            //Project project = db.projects.Find(id);
             if (project == null)
             {
                 return HttpNotFound();
@@ -35,23 +39,11 @@ namespace Project38CVsite.Controllers
             return View(project);
         }
 
-        public ActionResult DetailsOfParParticipants(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Project project = db.projects.Find(id);
-            if (project == null)
-            {
-                return HttpNotFound();
-            }
-            return View(project);
-        }
 
         // GET: Projects/Create
         public ActionResult Create()
         {
+            ViewBag.ManagerId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
@@ -60,7 +52,7 @@ namespace Project38CVsite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description")] Project project)
+        public ActionResult Create([Bind(Include = "Id,Title,Description,ManagerId")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -69,6 +61,7 @@ namespace Project38CVsite.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ManagerId = new SelectList(db.Users, "Id", "FirstName", project.ManagerId);
             return View(project);
         }
 
@@ -84,6 +77,7 @@ namespace Project38CVsite.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ManagerId = new SelectList(db.Users, "Id", "FirstName", project.ManagerId);
             return View(project);
         }
 
@@ -92,7 +86,7 @@ namespace Project38CVsite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description")] Project project)
+        public ActionResult Edit([Bind(Include = "Id,Title,Description,ManagerId")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -100,6 +94,40 @@ namespace Project38CVsite.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ManagerId = new SelectList(db.Users, "Id", "FirstName", project.ManagerId);
+            return View(project);
+        }
+
+        // GET: Projects/Edit/5
+        public ActionResult Join(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Project project = db.projects.Find(id);
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ManagerId = new SelectList(db.Users, "Id", "FirstName", project.ManagerId);
+            return View(project);
+        }
+
+        // POST: Projects/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Join([Bind(Include = "Id,Title,Description,ManagerId")] Project project)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(project).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.ManagerId = new SelectList(db.Users, "Id", "FirstName", project.ManagerId);
             return View(project);
         }
 

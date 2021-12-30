@@ -12,8 +12,6 @@ namespace Project38CVsite.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        [Key]
-        public override string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
@@ -21,8 +19,11 @@ namespace Project38CVsite.Models
         public string Skill { get; set; }
         public string Experience { get; set; }
         public bool IsPrivate { get; set; }
-        public virtual ICollection<Project> Projects { get; set; }
 
+        [ForeignKey("ProjectId")]
+        public ICollection<Project> Projects { get; set; }
+       
+        public ICollection<Project> ProjectManaging { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -47,6 +48,18 @@ namespace Project38CVsite.Models
             return new ApplicationDbContext();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Project>().HasRequired(x => x.Manager).WithMany(p => p.ProjectManaging).WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<UserProject>()
+                .HasKey(x => new { x.ProjectId, x.UserId });
+
+          
+        }
+
+       
 
     }
 }
