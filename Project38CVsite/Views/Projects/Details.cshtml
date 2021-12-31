@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Manager)
+            @Html.DisplayNameFor(model => model.Manager.FirstName)
         </dt>
 
         <dd>
@@ -35,20 +35,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Manager.Email)
+            @Html.DisplayNameFor(model => model.UserProjects)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Manager.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Participants)
-        </dt>
-        <dd>
-            @foreach (var item in Model.Participants)
+            @foreach (var item in Model.UserProjects)
             {
-                <p>@item.FirstName @item.LastName</p>
+                if (item != null)
+                {
+                    <p>@item.ApplicationUser.FirstName @item.ApplicationUser.LastName</p>
+                }
             }
         </dd>
 

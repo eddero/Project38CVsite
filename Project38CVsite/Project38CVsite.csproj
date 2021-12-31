@@ -171,16 +171,21 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\UserProjectsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202112291817581_Initial.cs" />
-    <Compile Include="Migrations\202112291817581_Initial.Designer.cs">
-      <DependentUpon>202112291817581_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202112301351002_Initial.cs" />
+    <Compile Include="Migrations\202112301351002_Initial.Designer.cs">
+      <DependentUpon>202112301351002_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202112301010560_pm.cs" />
-    <Compile Include="Migrations\202112301010560_pm.Designer.cs">
-      <DependentUpon>202112301010560_pm.cs</DependentUpon>
+    <Compile Include="Migrations\202112311040472_userproj.cs" />
+    <Compile Include="Migrations\202112311040472_userproj.Designer.cs">
+      <DependentUpon>202112311040472_userproj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112311042344_userporjver2.cs" />
+    <Compile Include="Migrations\202112311042344_userporjver2.Designer.cs">
+      <DependentUpon>202112311042344_userporjver2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -253,6 +258,11 @@
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\UserProjects\Create.cshtml" />
+    <Content Include="Views\UserProjects\Delete.cshtml" />
+    <Content Include="Views\UserProjects\Details.cshtml" />
+    <Content Include="Views\UserProjects\Edit.cshtml" />
+    <Content Include="Views\UserProjects\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -271,11 +281,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202112291817581_Initial.resx">
-      <DependentUpon>202112291817581_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202112301351002_Initial.resx">
+      <DependentUpon>202112301351002_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112301010560_pm.resx">
-      <DependentUpon>202112301010560_pm.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202112311040472_userproj.resx">
+      <DependentUpon>202112311040472_userproj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112311042344_userporjver2.resx">
+      <DependentUpon>202112311042344_userporjver2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,8 +20,9 @@ namespace Project38CVsite.Models
         public string Experience { get; set; }
         public bool IsPrivate { get; set; }
 
-        [ForeignKey("ProjectId")]
-        public ICollection<Project> Projects { get; set; }
+        //[ForeignKey("ProjectID")]
+
+        public ICollection<UserProject> UserProjects { get; set; }
        
         public ICollection<Project> ProjectManaging { get; set; }
 
@@ -36,6 +37,7 @@ namespace Project38CVsite.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<UserProject> userProjects { get; set; }
         public DbSet<Project> projects { get; set; }
 
         public ApplicationDbContext()
@@ -54,7 +56,8 @@ namespace Project38CVsite.Models
             modelBuilder.Entity<Project>().HasRequired(x => x.Manager).WithMany(p => p.ProjectManaging).WillCascadeOnDelete(false);
 
             modelBuilder.Entity<UserProject>()
-                .HasKey(x => new { x.ProjectId, x.UserId });
+                .HasKey(e => new { e.ProjectId, e.ApplicationUserId });
+
 
           
         }

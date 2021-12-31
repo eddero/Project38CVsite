@@ -13,11 +13,13 @@ namespace Project38CVsite.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public virtual ICollection<ApplicationUser> Participants { get; set; }
+
+        public virtual ICollection<UserProject> UserProjects { get; set; }
 
         public string ManagerId { get; set; }
         [ForeignKey("ManagerId")]
         public ApplicationUser Manager { get; set; }
 
     }
+
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -7,10 +9,16 @@ namespace Project38CVsite.Models
 {
     public class UserProject
     {
-        public string UserId { get; set; }
-        public ApplicationUser User { get; set; }
-
+       
+        //[Key, Column(Order = 1)]
         public int ProjectId { get; set; }
-        public Project Project { get; set; }
+        //[ForeignKey("ProjectID")]
+        public  Project Project { get; set; }
+
+
+        
+        public string ApplicationUserId { get; set; }
+        //[ForeignKey("ApplicationUserId")]
+        public  ApplicationUser ApplicationUser { get; set; }
     }
 }

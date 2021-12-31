@@ -10,113 +10,116 @@ using Project38CVsite.Models;
 
 namespace Project38CVsite.Controllers
 {
-    public class ProjectsController : Controller
+    public class UserProjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Projects
+        // GET: UserProjects
         public ActionResult Index()
         {
-            var projects = db.projects.Include(p => p.Manager);
-            ViewBag.ApplicationUserI = new SelectList(db.Users, "Id", "FirstName");
-            return View(projects.ToList());
+            var userProjects = db.userProjects.Include(u => u.ApplicationUser).Include(u => u.Project);
+            return View(userProjects.ToList());
         }
 
-        // GET: Projects/Details/5
+        // GET: UserProjects/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project project = db.projects.Find(id);
-            if (project == null)
+            UserProject userProject = db.userProjects.Find(id);
+            if (userProject == null)
             {
                 return HttpNotFound();
             }
-            return View(project);
+            return View(userProject);
         }
 
-        // GET: Projects/Create
+        // GET: UserProjects/Create
         public ActionResult Create()
         {
-            ViewBag.ManagerId = new SelectList(db.Users, "Id", "FirstName");
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName");
+            ViewBag.ProjectId = new SelectList(db.projects, "Id", "Title");
             return View();
         }
 
-        // POST: Projects/Create
+        // POST: UserProjects/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,ManagerId")] Project project)
+        public ActionResult Create([Bind(Include = "ProjectId,ApplicationUserId")] UserProject userProject)
         {
             if (ModelState.IsValid)
             {
-                db.projects.Add(project);
+                db.userProjects.Add(userProject);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ManagerId = new SelectList(db.Users, "Id", "FirstName", project.ManagerId);
-            return View(project);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", userProject.ApplicationUserId);
+            ViewBag.ProjectId = new SelectList(db.projects, "Id", "Title", userProject.ProjectId);
+            return View(userProject);
         }
 
-        // GET: Projects/Edit/5
+        // GET: UserProjects/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project project = db.projects.Find(id);
-            if (project == null)
+            UserProject userProject = db.userProjects.Find(id);
+            if (userProject == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ManagerId = new SelectList(db.Users, "Id", "FirstName", project.ManagerId);
-            return View(project);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", userProject.ApplicationUserId);
+            ViewBag.ProjectId = new SelectList(db.projects, "Id", "Title", userProject.ProjectId);
+            return View(userProject);
         }
 
-        // POST: Projects/Edit/5
+        // POST: UserProjects/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,ManagerId")] Project project)
+        public ActionResult Edit([Bind(Include = "ProjectId,ApplicationUserId")] UserProject userProject)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(project).State = EntityState.Modified;
+                db.Entry(userProject).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ManagerId = new SelectList(db.Users, "Id", "FirstName", project.ManagerId);
-            return View(project);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", userProject.ApplicationUserId);
+            ViewBag.ProjectId = new SelectList(db.projects, "Id", "Title", userProject.ProjectId);
+            return View(userProject);
         }
 
-        // GET: Projects/Delete/5
+        // GET: UserProjects/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project project = db.projects.Find(id);
-            if (project == null)
+            UserProject userProject = db.userProjects.Find(id);
+            if (userProject == null)
             {
                 return HttpNotFound();
             }
-            return View(project);
+            return View(userProject);
         }
 
-        // POST: Projects/Delete/5
+        // POST: UserProjects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Project project = db.projects.Find(id);
-            db.projects.Remove(project);
+            UserProject userProject = db.userProjects.Find(id);
+            db.userProjects.Remove(userProject);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

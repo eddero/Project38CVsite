@@ -14,35 +14,13 @@ namespace Project38CVsite.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(),
                         Description = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.AspNetUsers",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        Address = c.String(),
-                        Education = c.String(),
-                        Skill = c.String(),
-                        Experience = c.String(),
-                        IsPrivate = c.Boolean(nullable: false),
-                        Email = c.String(maxLength: 256),
-                        EmailConfirmed = c.Boolean(nullable: false),
-                        PasswordHash = c.String(),
-                        SecurityStamp = c.String(),
-                        PhoneNumber = c.String(),
-                        PhoneNumberConfirmed = c.Boolean(nullable: false),
-                        TwoFactorEnabled = c.Boolean(nullable: false),
-                        LockoutEndDateUtc = c.DateTime(),
-                        LockoutEnabled = c.Boolean(nullable: false),
-                        AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(nullable: false, maxLength: 256),
+                        ManagerId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
+                .ForeignKey("dbo.AspNetUsers", t => t.ManagerId)
+                .Index(t => t.ManagerId);
+            
+         
             
             CreateTable(
                 "dbo.AspNetUserClaims",
@@ -69,9 +47,20 @@ namespace Project38CVsite.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
-          
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
             
-    
+        
             CreateTable(
                 "dbo.ApplicationUserProjects",
                 c => new
@@ -90,6 +79,7 @@ namespace Project38CVsite.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Projects", "ManagerId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.ApplicationUserProjects", "Project_Id", "dbo.Projects");
             DropForeignKey("dbo.ApplicationUserProjects", "ApplicationUser_Id", "dbo.AspNetUsers");
@@ -103,6 +93,7 @@ namespace Project38CVsite.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.Projects", new[] { "ManagerId" });
             DropTable("dbo.ApplicationUserProjects");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
