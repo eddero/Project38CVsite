@@ -18,7 +18,7 @@ namespace Project38CVsite.Controllers
         public ActionResult Index()
         {
             var projects = db.projects.Include(p => p.Manager);
-            ViewBag.ApplicationUserI = new SelectList(db.Users, "Id", "FirstName");
+             ViewBag.ApplicationUserI = new SelectList(db.Users, "Id", "FirstName");
             return View(projects.ToList());
         }
 

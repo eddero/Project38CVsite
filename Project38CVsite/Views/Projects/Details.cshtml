@@ -34,20 +34,6 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserProjects)
-        </dt>
-
-        <dd>
-            @foreach (var item in Model.UserProjects)
-            {
-                if (item != null)
-                {
-                    <p>@item.ApplicationUser.FirstName @item.ApplicationUser.LastName</p>
-                }
-            }
-        </dd>
-
     </dl>
 </div>
 <p>
