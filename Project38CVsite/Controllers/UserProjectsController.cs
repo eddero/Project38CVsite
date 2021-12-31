@@ -23,7 +23,7 @@ namespace Project38CVsite.Controllers
         */
         public ActionResult About(int projectId)
         {
-            var userProjects = db.userProjects.Where(proj => proj.ProjectId == projectId);
+            var userProjects = db.userProjects.Include(m => m.ApplicationUser).Where(proj => proj.ProjectId == projectId);
             return View(userProjects.ToList());
         }
 

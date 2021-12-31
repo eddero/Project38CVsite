@@ -8,10 +8,10 @@
 <h2>Participants</h2>
 
 <ul>
-    @foreach (UserProject e in @Model)
+    @foreach (UserProject par in @Model)
      {
         <li>
-            @Html.ActionLink
+            <p>@par.ApplicationUser.FirstName</p>
         </li>           
      }
 </ul>
