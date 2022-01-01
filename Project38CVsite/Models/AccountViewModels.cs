@@ -103,6 +103,10 @@ namespace Project38CVsite.Models
         [Required]
         [Display(Name = "Address")]
         public string Address { get; set; }
+
+        [Required]
+        [Display(Name = "User Image")]
+        public string UserImg { get; set; }
     }
 
     public class ResetPasswordViewModel

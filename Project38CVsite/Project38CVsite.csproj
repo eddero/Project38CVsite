@@ -264,9 +264,12 @@
     <Content Include="Views\UserProjects\Edit.cshtml" />
     <Content Include="Views\UserProjects\Index.cshtml" />
     <Content Include="Views\UserProjects\About.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

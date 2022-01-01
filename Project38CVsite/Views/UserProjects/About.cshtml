@@ -11,6 +11,7 @@
     @foreach (UserProject par in @Model)
      {
         <li>
+            @Html.ActionLink(@par.ApplicationUser.FirstName + @par.ApplicationUser.LastName, "Detals", "")
             <p>@par.ApplicationUser.FirstName</p>
         </li>           
      }

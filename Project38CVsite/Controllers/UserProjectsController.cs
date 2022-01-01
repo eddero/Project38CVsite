@@ -15,12 +15,12 @@ namespace Project38CVsite.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: UserProjects
-        /*public ActionResult Index()
+        public ActionResult Index()
         {
             var userProjects = db.userProjects.Include(u => u.ApplicationUser).Include(u => u.Project);
             return View(userProjects.ToList());
         }
-        */
+
         public ActionResult About(int projectId)
         {
             var userProjects = db.userProjects.Include(m => m.ApplicationUser).Where(proj => proj.ProjectId == projectId);

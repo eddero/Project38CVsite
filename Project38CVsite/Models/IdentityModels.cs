@@ -19,8 +19,8 @@ namespace Project38CVsite.Models
         public string Skill { get; set; }
         public string Experience { get; set; }
         public bool IsPrivate { get; set; }
+        public string UserImg { get; set; }
 
-        //[ForeignKey("ProjectID")]
 
         public ICollection<UserProject> UserProjects { get; set; }
        
@@ -61,8 +61,5 @@ namespace Project38CVsite.Models
 
           
         }
-
-       
-
     }
 }
