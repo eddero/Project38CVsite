@@ -351,7 +351,6 @@ namespace Project38CVsite.Controllers
         {
 
             var userId = User.Identity.GetUserId();
-
             var user = UserManager.FindByIdAsync(userId);
             
             user.Result.FirstName = model.FirstName;
