@@ -22,6 +22,12 @@ namespace Project38CVsite.Controllers
             return View(projects.ToList());
         }
 
+        public ActionResult Managing(string userId)
+        {
+            var userProjects = db.projects.Where(proj => proj.ManagerId == userId);
+            return View(userProjects.ToList());
+        }
+
         // GET: Projects/Details/5
         public ActionResult Details(int? id)
         {

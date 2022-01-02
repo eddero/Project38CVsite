@@ -21,7 +21,7 @@ namespace Project38CVsite.Controllers
             return View(userProjects.ToList());
         }
 
-        public ActionResult About(int projectId)
+        public ActionResult GetParticipants(int projectId)
         {
             var userProjects = db.userProjects.Include(m => m.ApplicationUser).Where(proj => proj.ProjectId == projectId);
             return View(userProjects.ToList());

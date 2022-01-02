@@ -275,10 +275,11 @@
     <Content Include="Views\UserProjects\Details.cshtml" />
     <Content Include="Views\UserProjects\Edit.cshtml" />
     <Content Include="Views\UserProjects\Index.cshtml" />
-    <Content Include="Views\UserProjects\About.cshtml" />
+    <Content Include="Views\UserProjects\GetParticipants.cshtml" />
     <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Account\UploadImg.cshtml" />
+    <Content Include="Views\Projects\Managing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
