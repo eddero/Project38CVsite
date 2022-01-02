@@ -1,11 +1,17 @@
 ﻿@model Project38CVsite.Models.Project
 
+@using Microsoft.AspNet.Identity;
+
 @{
     ViewBag.Title = "Delete";
 }
 
+@{var userId = User.Identity.GetUserId();}
+
 <h2>Delete</h2>
 
+@if (userId == Model.ManagerId)
+{
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Project</h4>
@@ -37,7 +43,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
@@ -46,3 +53,8 @@
         </div>
     }
 </div>
+}
+else
+{
+<h1>Not The Manager</h1>
+}

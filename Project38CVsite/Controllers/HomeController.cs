@@ -25,10 +25,10 @@ namespace Project38CVsite.Controllers
             return View();
         }
 
-        public ActionResult Index1()
+        public ActionResult Index1(string search)
         {
 
-            return View(db.Users.ToList());
+            return View(db.Users.Where(x => x.FirstName.StartsWith(search) || search == null).ToList());
         }
 
         public ActionResult About()
