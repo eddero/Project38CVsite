@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 
 namespace Project38CVsite.Models
 {
@@ -104,9 +106,11 @@ namespace Project38CVsite.Models
         [Display(Name = "Address")]
         public string Address { get; set; }
 
-        [Required]
         [Display(Name = "User Image")]
-        public string UserImg { get; set; }
+        public string ImagePath { get; set; }
+
+        [NotMapped]
+        public  HttpPostedFileBase ImageFile { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -1,6 +1,9 @@
-﻿using Project38CVsite.Models;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Project38CVsite.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -14,6 +17,12 @@ namespace Project38CVsite.Controllers
         public HomeController()
         {
 
+        }
+
+        public ActionResult Index()
+        {
+
+            return View();
         }
 
         public ActionResult Index1()

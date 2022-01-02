@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace Project38CVsite.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -137,6 +139,40 @@ namespace Project38CVsite.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
+        public ActionResult UploadImg()
+        {
+            return View();
+        }
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadImg(ApplicationUser usr)
+        {
+            string fileName = Path.GetFileNameWithoutExtension(usr.ImageFile.FileName);
+            string extension = Path.GetExtension(usr.ImageFile.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            usr.ImagePath = "~/Image/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+            usr.ImageFile.SaveAs(fileName);
+
+
+
+            using ( ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Users.Add(usr);
+                db.SaveChanges();
+            }
+
+            ModelState.Clear();
+            return View();
+        }
+
+
+
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -149,9 +185,18 @@ namespace Project38CVsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+            string extension = Path.GetExtension(model.ImageFile.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            model.ImagePath = "/Images/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+            model.ImageFile.SaveAs(fileName);
+
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Skill = model.Skill, Address = model.Address, Education = model.Education, Experience = model.Experience, UserImg = model.UserImg };
+
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Skill = model.Skill, Address = model.Address, Education = model.Education, Experience = model.Experience, ImagePath = model.ImagePath };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

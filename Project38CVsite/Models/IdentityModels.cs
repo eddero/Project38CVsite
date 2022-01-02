@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web;
 
 namespace Project38CVsite.Models
 {
@@ -19,7 +20,9 @@ namespace Project38CVsite.Models
         public string Skill { get; set; }
         public string Experience { get; set; }
         public bool IsPrivate { get; set; }
-        public string UserImg { get; set; }
+        public string ImagePath { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
 
 
         public ICollection<UserProject> UserProjects { get; set; }
@@ -61,5 +64,6 @@ namespace Project38CVsite.Models
 
           
         }
+
     }
 }

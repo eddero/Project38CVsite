@@ -187,6 +187,18 @@
     <Compile Include="Migrations\202112311042344_userporjver2.Designer.cs">
       <DependentUpon>202112311042344_userporjver2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201011132036_userimg.cs" />
+    <Compile Include="Migrations\202201011132036_userimg.Designer.cs">
+      <DependentUpon>202201011132036_userimg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201011235029_test1.cs" />
+    <Compile Include="Migrations\202201011235029_test1.Designer.cs">
+      <DependentUpon>202201011235029_test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201011347366_notmap.cs" />
+    <Compile Include="Migrations\202201011347366_notmap.Designer.cs">
+      <DependentUpon>202201011347366_notmap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -266,9 +278,11 @@
     <Content Include="Views\UserProjects\About.cshtml" />
     <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Account\UploadImg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
@@ -293,6 +307,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112311042344_userporjver2.resx">
       <DependentUpon>202112311042344_userporjver2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201011132036_userimg.resx">
+      <DependentUpon>202201011132036_userimg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201011235029_test1.resx">
+      <DependentUpon>202201011235029_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201011347366_notmap.resx">
+      <DependentUpon>202201011347366_notmap.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
