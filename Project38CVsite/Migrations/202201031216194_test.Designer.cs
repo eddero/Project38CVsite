@@ -7,13 +7,13 @@ namespace Project38CVsite.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class userporjver2 : IMigrationMetadata
+    public sealed partial class test : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(userporjver2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(test));
         
         string IMigrationMetadata.Id
         {
-            get { return "202112311042344_userporjver2"; }
+            get { return "202201031216194_test"; }
         }
         
         string IMigrationMetadata.Source

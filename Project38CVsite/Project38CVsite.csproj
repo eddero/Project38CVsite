@@ -55,12 +55,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -167,42 +176,30 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\UserProjectsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202112301351002_Initial.cs" />
-    <Compile Include="Migrations\202112301351002_Initial.Designer.cs">
-      <DependentUpon>202112301351002_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202201031214504_Initial.cs" />
+    <Compile Include="Migrations\202201031214504_Initial.Designer.cs">
+      <DependentUpon>202201031214504_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202112311040472_userproj.cs" />
-    <Compile Include="Migrations\202112311040472_userproj.Designer.cs">
-      <DependentUpon>202112311040472_userproj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202112311042344_userporjver2.cs" />
-    <Compile Include="Migrations\202112311042344_userporjver2.Designer.cs">
-      <DependentUpon>202112311042344_userporjver2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201011132036_userimg.cs" />
-    <Compile Include="Migrations\202201011132036_userimg.Designer.cs">
-      <DependentUpon>202201011132036_userimg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201011235029_test1.cs" />
-    <Compile Include="Migrations\202201011235029_test1.Designer.cs">
-      <DependentUpon>202201011235029_test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201011347366_notmap.cs" />
-    <Compile Include="Migrations\202201011347366_notmap.Designer.cs">
-      <DependentUpon>202201011347366_notmap.cs</DependentUpon>
+    <Compile Include="Migrations\202201031216194_test.cs" />
+    <Compile Include="Migrations\202201031216194_test.Designer.cs">
+      <DependentUpon>202201031216194_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\MessageHeader.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\UserProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -230,6 +227,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ScriptsForFunctions\Message.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -280,6 +278,7 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Account\UploadImg.cshtml" />
     <Content Include="Views\Projects\Managing.cshtml" />
+    <Content Include="Views\UserProjects\Join.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,23 +299,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202112301351002_Initial.resx">
-      <DependentUpon>202112301351002_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202201031214504_Initial.resx">
+      <DependentUpon>202201031214504_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112311040472_userproj.resx">
-      <DependentUpon>202112311040472_userproj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112311042344_userporjver2.resx">
-      <DependentUpon>202112311042344_userporjver2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201011132036_userimg.resx">
-      <DependentUpon>202201011132036_userimg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201011235029_test1.resx">
-      <DependentUpon>202201011235029_test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201011347366_notmap.resx">
-      <DependentUpon>202201011347366_notmap.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202201031216194_test.resx">
+      <DependentUpon>202201031216194_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

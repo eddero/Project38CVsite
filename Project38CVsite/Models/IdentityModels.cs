@@ -28,6 +28,8 @@ namespace Project38CVsite.Models
         public ICollection<UserProject> UserProjects { get; set; }
        
         public ICollection<Project> ProjectManaging { get; set; }
+   
+        public ICollection<Message> Messages { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -42,6 +44,7 @@ namespace Project38CVsite.Models
     {
         public DbSet<UserProject> userProjects { get; set; }
         public DbSet<Project> projects { get; set; }
+        public DbSet<Message> messages { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -62,8 +65,9 @@ namespace Project38CVsite.Models
                 .HasKey(e => new { e.ProjectId, e.ApplicationUserId });
 
 
-          
+            modelBuilder.Entity<Message>().HasRequired(x => x.User).WithMany(p => p.Messages).WillCascadeOnDelete(false);
         }
 
     }
+  
 }

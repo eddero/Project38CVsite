@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Project38CVsite.Models;
 
 namespace Project38CVsite.Controllers
@@ -45,6 +46,8 @@ namespace Project38CVsite.Controllers
         // GET: UserProjects/Create
         public ActionResult Create()
         {
+            var userId = User.Identity.GetUserId();
+
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName");
             ViewBag.ProjectId = new SelectList(db.projects, "Id", "Title");
             return View();
@@ -57,6 +60,27 @@ namespace Project38CVsite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProjectId,ApplicationUserId")] UserProject userProject)
         {
+            var userId = User.Identity.GetUserId();
+            if (ModelState.IsValid)
+            {
+                db.userProjects.Add(userProject);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", userProject.ApplicationUserId);
+            ViewBag.ProjectId = new SelectList(db.projects, "Id", "Title", userProject.ProjectId);
+            return View(userProject);
+        }
+
+        public ActionResult Join()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Join(UserProject userProject, int projectId)
+        {
             if (ModelState.IsValid)
             {
                 db.userProjects.Add(userProject);
@@ -64,8 +88,6 @@ namespace Project38CVsite.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FirstName", userProject.ApplicationUserId);
-            ViewBag.ProjectId = new SelectList(db.projects, "Id", "Title", userProject.ProjectId);
             return View(userProject);
         }
 

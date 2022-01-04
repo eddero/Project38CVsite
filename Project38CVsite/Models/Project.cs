@@ -20,6 +20,7 @@ namespace Project38CVsite.Models
         [ForeignKey("ManagerId")]
         public ApplicationUser Manager { get; set; }
 
+
     }
 
 }
