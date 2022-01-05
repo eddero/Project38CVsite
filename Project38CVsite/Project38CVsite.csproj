@@ -180,6 +180,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Messages1Controller.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\UserProjectsController.cs" />
@@ -283,6 +284,12 @@
     <Content Include="Views\Account\UploadImg.cshtml" />
     <Content Include="Views\Projects\Managing.cshtml" />
     <Content Include="Views\UserProjects\Join.cshtml" />
+    <Content Include="Views\Messages1\Create.cshtml" />
+    <Content Include="Views\Messages1\Delete.cshtml" />
+    <Content Include="Views\Messages1\Details.cshtml" />
+    <Content Include="Views\Messages1\Edit.cshtml" />
+    <Content Include="Views\Messages1\Index.cshtml" />
+    <Content Include="Views\Messages1\GetMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
