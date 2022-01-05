@@ -166,32 +166,61 @@
     @Html.ActionLink("Back to List", "Index")
 </p>
 
+@if (User.Identity.IsAuthenticated)
+{
 
+    <div class="row" style="border:2px solid black; margin:0 auto; padding:20px ">
+        <div class="col-md-10">
+            From User
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtFromUser" class="form-control" value="@userId" />
+        </div>
+        <div class="col-md-10">
+            Content
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtContent" class="form-control" />
+        </div>
+        <div class="col-md-10">
+            To User
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtToUser" class="form-control" value="@Model.Id" />
+        </div>
+        <div class="col-md-10">
+            <button class="btn btn-primary" onclick="SendMessageFromUser()">Send Message</button>
+        </div>
+    </div>
 
-<div class="row" style="border:2px solid black; margin:0 auto; padding:20px ">
-    <div class="col-md-10">
-        From User
+}
+else
+{
+    <div class="row" style="border:2px solid black; margin:0 auto; padding:20px ">
+        <div class="col-md-10">
+            From Name
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtFromName" class="form-control" />
+        </div>
+        <div class="col-md-10">
+            Content
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtContent" class="form-control" />
+        </div>
+        <div class="col-md-10">
+            To User
+        </div>
+        <div class="col-md-10">
+            <input type="text" id="txtToUser" class="form-control" value="@Model.Id" />
+        </div>
+        <div class="col-md-10">
+            <button class="btn btn-primary" onclick="SendMessageFromName()">Send Message</button>
+        </div>
     </div>
-    <div class="col-md-10">
-        <input type="text" id="txtFromUser" class="form-control" value="@userId" />
-    </div>
-    <div class="col-md-10">
-        Content
-    </div>
-    <div class="col-md-10">
-        <input type="text" id="txtContent" class="form-control" />
-    </div>
-    <div class="col-md-10">
-        To User
-    </div>
-    <div class="col-md-10">
-        <input type="text" id="txtToUser" class="form-control" value="@Model.Id" />
-    </div>
-    <div class="col-md-10">
-        <button class="btn btn-primary" onclick="SendMessage()">Send Message</button>
-    </div>
-</div>
 
+}
 
 
 <script src="~/Scripts/ScriptsForFunctions/Message.js"></script>
