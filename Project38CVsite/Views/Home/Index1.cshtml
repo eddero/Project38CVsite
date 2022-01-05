@@ -1,15 +1,8 @@
 ﻿@model IEnumerable<Project38CVsite.Models.ApplicationUser>
 
-@using Microsoft.AspNet.Identity;
-
 @{
     ViewBag.Title = "Index1";
 }
-
-@{var userId = User.Identity.GetUserId(); }
-
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-
 
 <h2>Index1</h2>
 
@@ -72,6 +65,12 @@
                         @Html.DisplayFor(modelItem => item.FirstName)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.LastName)
                     </td>
                     <td>
@@ -96,10 +95,10 @@
                         @Html.DisplayFor(modelItem => item.ProjectManaging.Count)
                     </td>
                     <td>
-                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" width="80px" height="50px" />
+                        @Html.DisplayFor(modelItem => item.ProjectManaging.Count)
                     </td>
                     <td>
-                        <button>Message Me</button>
+                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" width="80px" height="50px" />
                     </td>
                     <!--
                         <td>
@@ -111,7 +110,7 @@
                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                         @Html.ActionLink("Managing", "Managing", "Projects", new { userId = item.Id }, null) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                        @Html.ActionLink("Message Me", "Delete", new { id = item.Id })
+
                     </td>
                 </tr>
 
@@ -123,18 +122,3 @@
 </table>
 
 
-
-<div class="row" style="border:2px solid black; margin:0 auto; padding:20px ">
-    <div class="col-md-10">
-        Content
-    </div>
-    <div class="col-md-10">
-        <input type="text" id="txtContent" class="form-control" />
-    </div>
-    <div class="col-md-10">
-        <button class="btn btn-primary" onclick="SendMessage()">Send Message</button>
-    </div>
-</div>
-
-
-<script src="~/Scripts/ScriptsForFunctions/Message.js"></script>

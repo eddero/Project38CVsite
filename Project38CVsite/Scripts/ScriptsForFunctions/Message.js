@@ -6,11 +6,13 @@ $(document).ready(function () {
 function SendMessage() {
     var url = "/api/Messages"
     var objectMessage = {};
-    var idfrom = 
-
+    
     objectMessage.Content = $('#txtContent').val();
     objectMessage.IsRead = false;
-    objectMessage.ToUserId = "9f155b94-d46a-49fe-836a-bddc246365f9";
+    objectMessage.ToUserId = $('#txtToUser').val();
+    objectMessage.FromUserId = $('#txtFromUser').val();
+    //objectMessage.ToUserId = "f194d933-edad-4b31-bdc4-005da3e5ea4c"
+    //objectMessage.FromUserId = "f194d933-edad-4b31-bdc4-005da3e5ea4c"
 
     if (objectMessage) {
         $.ajax({

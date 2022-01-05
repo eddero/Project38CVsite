@@ -1,8 +1,13 @@
 ﻿@model Project38CVsite.Models.ApplicationUser
 
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
 @{
     ViewBag.Title = "Details";
 }
+@using Microsoft.AspNet.Identity;
+
+@{var userId = User.Identity.GetUserId();}
 
 <h2>Details</h2>
 
@@ -160,3 +165,33 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
+
+<div class="row" style="border:2px solid black; margin:0 auto; padding:20px ">
+    <div class="col-md-10">
+        From User
+    </div>
+    <div class="col-md-10">
+        <input type="text" id="txtFromUser" class="form-control" value="@userId" />
+    </div>
+    <div class="col-md-10">
+        Content
+    </div>
+    <div class="col-md-10">
+        <input type="text" id="txtContent" class="form-control" />
+    </div>
+    <div class="col-md-10">
+        To User
+    </div>
+    <div class="col-md-10">
+        <input type="text" id="txtToUser" class="form-control" value="@Model.Id" />
+    </div>
+    <div class="col-md-10">
+        <button class="btn btn-primary" onclick="SendMessage()">Send Message</button>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/ScriptsForFunctions/Message.js"></script>

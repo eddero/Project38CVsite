@@ -93,7 +93,8 @@ namespace Project38CVsite.Controllers
                 return BadRequest(ModelState);
             }
 
-            message.FromUserId = User.Identity.GetUserId();
+
+            //message.FromUserId = User.Identity.GetUserId();
 
             db.messages.Add(message);
             db.SaveChanges();
