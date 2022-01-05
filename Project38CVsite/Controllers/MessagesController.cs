@@ -40,7 +40,7 @@ namespace Project38CVsite.Controllers
         public IHttpActionResult GetString()
         {
             var userId = User.Identity.GetUserId();
-            var message = db.messages.Where(e => e.FromUserId == userId).ToList();
+            var message = db.messages.Where(e => e.ToUserId == userId).ToList();
             if (message == null)
             {
                 return NotFound();

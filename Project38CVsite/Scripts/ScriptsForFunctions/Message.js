@@ -57,7 +57,6 @@ function SendMessageFromName() {
     }
 }
 
-
 function GetMessages() {
     var Url = "/api/Messages";
     $.ajax({
@@ -67,9 +66,25 @@ function GetMessages() {
         type: "Get",
         success: function (result) {
             alert(JSON.stringify(result));
+            if (result) {
+                $('#tblMessageBody').html('');
+                var row = '';
+                for (var i = 0; i < result.length; i++) {
+                    row = row
+                        + "<tr>"
+                        + "<td>" + result[i].FromUserId + "</td>"
+                        + "<td>" + result[i].Content + "</td>"
+                        + "<td> <button class='btn btn-primary'> Edit </button></td>"
+                        + "<tr>";
+                }
+                if (row != '') {
+                    $('#tblMessageBody').append(row);
+                }
+            }
+            
         },
-        error: function (result) {
-            alert(result);
+        error: function(msg) {
+            alert(msg);
         }
 
     });
