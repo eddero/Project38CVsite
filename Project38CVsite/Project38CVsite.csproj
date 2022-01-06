@@ -183,7 +183,6 @@
     <Compile Include="Controllers\Messages1Controller.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
-    <Compile Include="Controllers\UserProjectsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +197,10 @@
     <Compile Include="Migrations\202201051055414_fromName.cs" />
     <Compile Include="Migrations\202201051055414_fromName.Designer.cs">
       <DependentUpon>202201051055414_fromName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201061026353_newuserproj.cs" />
+    <Compile Include="Migrations\202201061026353_newuserproj.Designer.cs">
+      <DependentUpon>202201061026353_newuserproj.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -273,28 +276,22 @@
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
-    <Content Include="Views\UserProjects\Create.cshtml" />
-    <Content Include="Views\UserProjects\Delete.cshtml" />
-    <Content Include="Views\UserProjects\Details.cshtml" />
-    <Content Include="Views\UserProjects\Edit.cshtml" />
-    <Content Include="Views\UserProjects\Index.cshtml" />
-    <Content Include="Views\UserProjects\GetParticipants.cshtml" />
     <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Account\UploadImg.cshtml" />
     <Content Include="Views\Projects\Managing.cshtml" />
-    <Content Include="Views\UserProjects\Join.cshtml" />
     <Content Include="Views\Messages1\Create.cshtml" />
     <Content Include="Views\Messages1\Delete.cshtml" />
     <Content Include="Views\Messages1\Details.cshtml" />
     <Content Include="Views\Messages1\Edit.cshtml" />
     <Content Include="Views\Messages1\Index.cshtml" />
     <Content Include="Views\Messages1\GetMessage.cshtml" />
+    <Content Include="Views\Projects\Join.cshtml" />
+    <Content Include="Views\Projects\GetParticipants.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -318,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201051055414_fromName.resx">
       <DependentUpon>202201051055414_fromName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201061026353_newuserproj.resx">
+      <DependentUpon>202201061026353_newuserproj.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

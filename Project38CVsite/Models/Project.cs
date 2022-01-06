@@ -14,7 +14,7 @@ namespace Project38CVsite.Models
         public string Title { get; set; }
         public string Description { get; set; }
 
-        public virtual ICollection<UserProject> UserProjects { get; set; }
+        public virtual ICollection<ApplicationUser> Participants { get; set; }
 
         public string ManagerId { get; set; }
         [ForeignKey("ManagerId")]

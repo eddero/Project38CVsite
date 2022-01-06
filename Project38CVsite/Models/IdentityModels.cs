@@ -25,8 +25,9 @@ namespace Project38CVsite.Models
         public HttpPostedFileBase ImageFile { get; set; }
 
 
-        public ICollection<UserProject> UserProjects { get; set; }
+        public ICollection<Project> WorkOn { get; set; }
        
+
         public ICollection<Project> ProjectManaging { get; set; }
    
         public ICollection<Message> Messages { get; set; }
@@ -42,7 +43,6 @@ namespace Project38CVsite.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<UserProject> userProjects { get; set; }
         public DbSet<Project> projects { get; set; }
         public DbSet<Message> messages { get; set; }
 
@@ -61,13 +61,20 @@ namespace Project38CVsite.Models
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Project>().HasRequired(x => x.Manager).WithMany(p => p.ProjectManaging).WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<UserProject>()
-                .HasKey(e => new { e.ProjectId, e.ApplicationUserId });
-
 
             modelBuilder.Entity<Message>().HasRequired(x => x.User).WithMany(p => p.Messages).WillCascadeOnDelete(false);
-        }
 
+
+            modelBuilder.Entity<Project>()
+               .HasMany<ApplicationUser>(s => s.Participants)
+               .WithMany(c => c.WorkOn)
+               .Map(cs =>
+               {
+                   cs.MapLeftKey("ProjectRefId");
+                   cs.MapRightKey("UserRefId");
+                   cs.ToTable("UserProject");
+               });
+        }
     }
   
 }

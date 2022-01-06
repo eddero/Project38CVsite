@@ -69,6 +69,30 @@ namespace Project38CVsite.Controllers
             return View(project);
         }
 
+        public ActionResult GetParticipants(int id)
+        {
+            var userProjects = db.projects.Where(proj => proj.Id == id);
+
+            return View(userProjects.ToList());
+        }
+
+        public ActionResult Join(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.Id == userId);
+
+            Project project = db.projects.Find(id);
+
+            if (user.WorkOn == null)
+            {
+                //It's null - create it
+                user.WorkOn = new List<Project>();
+            }
+            user.WorkOn.Add(project);
+            db.SaveChanges();
+            return View(project);
+        }
+      
         // GET: Projects/Edit/5
         public ActionResult Edit(int? id)
         {
