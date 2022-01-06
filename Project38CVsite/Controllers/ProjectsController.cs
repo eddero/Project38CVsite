@@ -88,9 +88,15 @@ namespace Project38CVsite.Controllers
                 //It's null - create it
                 user.WorkOn = new List<Project>();
             }
+            if (project.Participants.Contains(user))
+            {
+                return View(project);
+            }
+
             user.WorkOn.Add(project);
             db.SaveChanges();
             return View(project);
+
         }
       
         // GET: Projects/Edit/5
