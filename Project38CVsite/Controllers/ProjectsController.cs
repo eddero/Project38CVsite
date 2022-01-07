@@ -19,7 +19,6 @@ namespace Project38CVsite.Controllers
         public ActionResult Index()
         {
             var projects = db.projects.Include(p => p.Manager);
-             ViewBag.ApplicationUserI = new SelectList(db.Users, "Id", "FirstName");
             return View(projects.ToList());
         }
 
@@ -58,14 +57,15 @@ namespace Project38CVsite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title,Description,ManagerId")] Project project)
         {
+            var userId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
+                project.ManagerId = userId;
                 db.projects.Add(project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ManagerId = new SelectList(db.Users, "Id", "FirstName", project.ManagerId);
             return View(project);
         }
 
