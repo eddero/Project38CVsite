@@ -118,7 +118,7 @@ namespace Project38CVsite.Controllers
             {
                 db.Entry(message).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("GetMessage");
             }
             ViewBag.FromUserId = new SelectList(db.Users, "Id", "FirstName", message.FromUserId);
             ViewBag.ToUserId = new SelectList(db.Users, "Id", "FirstName", message.ToUserId);
@@ -148,7 +148,7 @@ namespace Project38CVsite.Controllers
             Message message = db.messages.Find(id);
             db.messages.Remove(message);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("GetMessage");
         }
 
         protected override void Dispose(bool disposing)

@@ -79,86 +79,6 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailConfirmed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmailConfirmed)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PasswordHash)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SecurityStamp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SecurityStamp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TwoFactorEnabled)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEndDateUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEnabled)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEnabled)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AccessFailedCount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AccessFailedCount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
     </dl>
 </div>
 <p>
@@ -170,10 +90,7 @@
 {
 
     <div class="row" style="border:2px solid black; margin:0 auto; padding:20px ">
-        <div class="col-md-10">
-            From User
-        </div>
-        <div class="col-md-10">
+        <div hidden class="col-md-10">
             <input type="text" id="txtFromUser" class="form-control" value="@userId" />
         </div>
         <div class="col-md-10">
@@ -182,10 +99,7 @@
         <div class="col-md-10">
             <input type="text" id="txtContent" class="form-control" />
         </div>
-        <div class="col-md-10">
-            To User
-        </div>
-        <div class="col-md-10">
+        <div hidden class="col-md-10">
             <input type="text" id="txtToUser" class="form-control" value="@Model.Id" />
         </div>
         <div class="col-md-10">
@@ -209,10 +123,7 @@ else
         <div class="col-md-10">
             <input type="text" id="txtContent" class="form-control" />
         </div>
-        <div class="col-md-10">
-            To User
-        </div>
-        <div class="col-md-10">
+        <div hidden class="col-md-10">
             <input type="text" id="txtToUser" class="form-control" value="@Model.Id" />
         </div>
         <div class="col-md-10">

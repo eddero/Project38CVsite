@@ -39,7 +39,10 @@
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Details", "GetParticipants", new { id = item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            @Html.ActionLink("Join", "Join", new { id = item.Id })
+
+            @if (User.Identity.IsAuthenticated)
+            {@Html.ActionLink("Join", "Join", new { id = item.Id })
+            }
         </td>
     </tr>
 }

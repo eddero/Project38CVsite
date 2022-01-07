@@ -280,11 +280,8 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Account\UploadImg.cshtml" />
     <Content Include="Views\Projects\Managing.cshtml" />
-    <Content Include="Views\Messages1\Create.cshtml" />
     <Content Include="Views\Messages1\Delete.cshtml" />
-    <Content Include="Views\Messages1\Details.cshtml" />
     <Content Include="Views\Messages1\Edit.cshtml" />
-    <Content Include="Views\Messages1\Index.cshtml" />
     <Content Include="Views\Messages1\GetMessage.cshtml" />
     <Content Include="Views\Projects\Join.cshtml" />
     <Content Include="Views\Projects\GetParticipants.cshtml" />

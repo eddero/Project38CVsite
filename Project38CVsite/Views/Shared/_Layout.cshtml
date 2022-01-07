@@ -2,7 +2,7 @@
 @using Project38CVsite.Controllers
 @using Microsoft.AspNet.Identity;
 
-@{Messages1Controller v2r = new Messages1Controller();}
+@{Messages1Controller mes = new Messages1Controller();}
 <html>
 <head>
     <meta charset="utf-8" />
@@ -36,8 +36,8 @@
             @if (User.Identity.IsAuthenticated)
             {
                 var userId = User.Identity.GetUserId();
-                var number = v2r.CountMessage(userId);
-                <p style="color:white">@number messages</p>
+                var number = mes.CountMessage(userId);
+                <p style="color: white;">@number messages</p>
             }
         </div>
     </div>
@@ -55,24 +55,3 @@
 </body>
 </html>
 
-
-<script>
-    $(document).ready(function () {
-        $.ajax({
-            url: "Messages1/Count",
-            method: "GET",
-            success: function (data) {
-                console.log(data);
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        })
-
-    })
-
-</script>
-
-
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/ScriptsForFunctions/Message.js"></script>
