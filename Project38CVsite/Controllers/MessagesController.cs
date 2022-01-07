@@ -37,6 +37,8 @@ namespace Project38CVsite.Controllers
             return Ok(message);
         }
         */
+
+
         public IHttpActionResult GetString()
         {
             var userId = User.Identity.GetUserId();

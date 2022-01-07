@@ -1,6 +1,7 @@
 ﻿
 $(document).ready(function () {
-    GetMessages();
+
+    GetCountMessages();
 })
 
 function SendMessageFromUser() {
@@ -80,13 +81,28 @@ function GetMessages() {
                 if (row != '') {
                     $('#tblMessageBody').append(row);
                 }
-            }
-            
+            }          
         },
         error: function(msg) {
             alert(msg);
         }
 
     });
+}
+
+function GetCountMessages() {
+    $.ajax({
+        url: "/api/Messages",
+        method: "GET",
+        success: function (data) {
+            if (data) {
+                $('#test1').append(data);
+            }
+            console.log(data);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    })
 }
 

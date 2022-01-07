@@ -22,7 +22,6 @@ namespace Project38CVsite.Controllers
             return View(messages.ToList());
         }
 
-
         public ActionResult GetMessage()
         {
             var userId = User.Identity.GetUserId();
@@ -35,6 +34,18 @@ namespace Project38CVsite.Controllers
 
             return View(message);
         }
+
+
+        public int CountMessage(string id)
+        {
+
+            var userId = id;
+            var message = db.messages.Where(e => e.ToUserId == userId && e.IsRead == false).ToList().Count;
+
+
+            return message;
+        }
+
 
 
         // GET: Messages1/Details/5

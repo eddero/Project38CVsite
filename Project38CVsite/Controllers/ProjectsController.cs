@@ -98,7 +98,7 @@ namespace Project38CVsite.Controllers
             return View(project);
 
         }
-      
+
         // GET: Projects/Edit/5
         public ActionResult Edit(int? id)
         {
