@@ -25,7 +25,7 @@ namespace Project38CVsite.Models
         public HttpPostedFileBase ImageFile { get; set; }
 
 
-        public ICollection<Project> WorkOn { get; set; }
+        public virtual ICollection<Project> WorkOn { get; set; }
        
 
         public ICollection<Project> ProjectManaging { get; set; }
@@ -75,6 +75,7 @@ namespace Project38CVsite.Models
                    cs.ToTable("UserProject");
                });
         }
+
     }
   
 }

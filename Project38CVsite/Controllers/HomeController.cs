@@ -32,6 +32,13 @@ namespace Project38CVsite.Controllers
            return View(db.Users.Where(x => x.FirstName.StartsWith(search) || search == null).ToList());
         }
 
+        public ActionResult GetWorkOn(string id)
+        {
+            var userProjects = db.Users.Where(usr => usr.Id == id);
+
+            return View(userProjects.ToList());
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

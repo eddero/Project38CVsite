@@ -79,6 +79,9 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
 
+        <dd>
+            @Html.ActionLink("Work on", "GetWorkOn", new { id = @Model.Id })
+        </dd>
     </dl>
 </div>
 <p>

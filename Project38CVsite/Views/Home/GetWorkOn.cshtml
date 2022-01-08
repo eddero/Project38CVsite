@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Project38CVsite.Models.ApplicationUser>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkOn)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @foreach (var work in item.WorkOn)
+                {
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <ul>@work.Title</ul>
+                    }              
+
+                }
+            <td>
+        </tr>
+    }
+
+</table>
