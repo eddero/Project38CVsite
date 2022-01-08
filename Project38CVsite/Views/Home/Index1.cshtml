@@ -4,7 +4,7 @@
     ViewBag.Title = "Index1";
 }
 
-<h2>Index1</h2>
+<h2>Users</h2>
 
 @using (Html.BeginForm("Index1", "Home", FormMethod.Get))
 {
@@ -24,7 +24,6 @@
         <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
-        </th>
         <th></th>
     </tr>
     @if (Model.Count() == 0)
@@ -38,7 +37,7 @@
 
         foreach (var item in Model)
         {
-            if (item.IsPrivate == false)
+            if (User.Identity.IsAuthenticated)
             {
                 <tr>
                     <td>
@@ -48,10 +47,22 @@
                         @Html.DisplayFor(modelItem => item.LastName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ProjectManaging.Count)
+                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" width="80px" height="50px" />
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ProjectManaging.Count)
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Managing", "Managing", "Projects", new { userId = item.Id }, null) |
+                    </td>
+                </tr>
+            }
+            else if (item.IsPrivate == false)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
                     </td>
                     <td>
                         <img src="@Html.DisplayFor(modelItem => item.ImagePath)" width="80px" height="50px" />
@@ -61,12 +72,16 @@
                         @Html.ActionLink("Managing", "Managing", "Projects", new { userId = item.Id }, null) |
                     </td>
                 </tr>
-
-
             }
 
         }
     }
 </table>
 
+<h2>Projects</h2>
 
+@foreach (var item in (IEnumerable<Project38CVsite.Models.Project>)ViewData["Projects"])
+{
+<li>@item.Title Manage by @item.Manager.FirstName @item.Manager.LastName</li>
+
+}

@@ -9,9 +9,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Participants.Count)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Participants)
         </th>
         <th></th>
@@ -21,14 +18,19 @@
     {
     <tr>
     <td>
-        @Html.DisplayFor(modelItem => item.Participants.Count)
-    </td>
-    <td>
         @foreach (var par in item.Participants)
         {
-            <ul>@par.FirstName  @par.LastName</ul>
+            if (User.Identity.IsAuthenticated)
+            {
+                <ul>@par.FirstName  @par.LastName</ul>
+            }
+            else if (par.IsPrivate == false)
+            {
+                <ul>@par.FirstName  @par.LastName</ul>
+            }
+
         }
-    <td>
+<td>
     </tr>
 }
 

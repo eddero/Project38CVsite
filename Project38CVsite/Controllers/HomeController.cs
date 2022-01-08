@@ -27,8 +27,9 @@ namespace Project38CVsite.Controllers
 
         public ActionResult Index1(string search)
         {
+            ViewData["Projects"] = db.projects.ToList();
 
-            return View(db.Users.Where(x => x.FirstName.StartsWith(search) || search == null).ToList());
+           return View(db.Users.Where(x => x.FirstName.StartsWith(search) || search == null).ToList());
         }
 
         public ActionResult About()
