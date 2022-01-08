@@ -31,8 +31,7 @@ namespace Project38CVsite.Models
         [Required]
         [StringLength(1024)]
         public string Experience { get; set; }
-        [Required]
-        [StringLength(1024)]
+
         public bool IsPrivate { get; set; }
         public string ImagePath { get; set; }
         [NotMapped]

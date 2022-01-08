@@ -13,7 +13,7 @@ namespace Project38CVsite.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202201081755128_Initial"; }
+            get { return "202201081830220_Initial"; }
         }
         
         string IMigrationMetadata.Source

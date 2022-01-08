@@ -7,64 +7,9 @@ namespace Project38CVsite.Migrations
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.Messages",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Content = c.String(),
-                        IsRead = c.Boolean(nullable: false),
-                        FromName = c.String(),
-                        FromUserId = c.String(maxLength: 128),
-                        ToUserId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.FromUserId)
-                .ForeignKey("dbo.AspNetUsers", t => t.ToUserId)
-                .Index(t => t.FromUserId)
-                .Index(t => t.ToUserId);
-            
-            CreateTable(
-                "dbo.AspNetUsers",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        Address = c.String(),
-                        Education = c.String(),
-                        Skill = c.String(),
-                        Experience = c.String(),
-                        IsPrivate = c.Boolean(nullable: false),
-                        ImagePath = c.String(),
-                        Email = c.String(maxLength: 256),
-                        EmailConfirmed = c.Boolean(nullable: false),
-                        PasswordHash = c.String(),
-                        SecurityStamp = c.String(),
-                        PhoneNumber = c.String(),
-                        PhoneNumberConfirmed = c.Boolean(nullable: false),
-                        TwoFactorEnabled = c.Boolean(nullable: false),
-                        LockoutEndDateUtc = c.DateTime(),
-                        LockoutEnabled = c.Boolean(nullable: false),
-                        AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserClaims",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        ClaimType = c.String(),
-                        ClaimValue = c.String(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
-            
+           
+          
+          
             CreateTable(
                 "dbo.AspNetUserLogins",
                 c => new
@@ -82,8 +27,8 @@ namespace Project38CVsite.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
-                        Description = c.String(),
+                        Title = c.String(nullable: false, maxLength: 1024),
+                        Description = c.String(nullable: false, maxLength: 1024),
                         ManagerId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
