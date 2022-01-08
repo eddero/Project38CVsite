@@ -11,10 +11,16 @@ namespace Project38CVsite.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        [StringLength(1024)]
         public string Content { get; set; }
         public bool IsRead { get; set; }
 
+        [Required]
+        [StringLength(1024)]
         public string FromName { get; set; }
+
         public string FromUserId { get; set; }
         [ForeignKey("FromUserId")]
         public ApplicationUser FromUser { get; set; }

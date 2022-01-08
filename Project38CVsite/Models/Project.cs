@@ -11,7 +11,13 @@ namespace Project38CVsite.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        [StringLength(1024)]
         public string Title { get; set; }
+
+        [Required]
+        [StringLength(1024)]
         public string Description { get; set; }
 
         public virtual ICollection<ApplicationUser> Participants { get; set; }

@@ -13,12 +13,26 @@ namespace Project38CVsite.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        [Required]
+        [StringLength(1024)]
         public string FirstName { get; set; }
+        [Required]
+        [StringLength(1024)]
         public string LastName { get; set; }
+        [Required]
+        [StringLength(1024)]
         public string Address { get; set; }
+        [Required]
+        [StringLength(1024)]
         public string Education { get; set; }
+        [Required]
+        [StringLength(1024)]
         public string Skill { get; set; }
+        [Required]
+        [StringLength(1024)]
         public string Experience { get; set; }
+        [Required]
+        [StringLength(1024)]
         public bool IsPrivate { get; set; }
         public string ImagePath { get; set; }
         [NotMapped]

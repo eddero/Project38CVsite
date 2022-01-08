@@ -186,21 +186,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202201031214504_Initial.cs" />
-    <Compile Include="Migrations\202201031214504_Initial.Designer.cs">
-      <DependentUpon>202201031214504_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201031216194_test.cs" />
-    <Compile Include="Migrations\202201031216194_test.Designer.cs">
-      <DependentUpon>202201031216194_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201051055414_fromName.cs" />
-    <Compile Include="Migrations\202201051055414_fromName.Designer.cs">
-      <DependentUpon>202201051055414_fromName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201061026353_newuserproj.cs" />
-    <Compile Include="Migrations\202201061026353_newuserproj.Designer.cs">
-      <DependentUpon>202201061026353_newuserproj.cs</DependentUpon>
+    <Compile Include="Migrations\202201081755128_Initial.cs" />
+    <Compile Include="Migrations\202201081755128_Initial.Designer.cs">
+      <DependentUpon>202201081755128_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -303,17 +291,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202201031214504_Initial.resx">
-      <DependentUpon>202201031214504_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201031216194_test.resx">
-      <DependentUpon>202201031216194_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201051055414_fromName.resx">
-      <DependentUpon>202201051055414_fromName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201061026353_newuserproj.resx">
-      <DependentUpon>202201061026353_newuserproj.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202201081755128_Initial.resx">
+      <DependentUpon>202201081755128_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
