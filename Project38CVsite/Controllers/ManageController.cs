@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Owin.Security;
 using Project38CVsite.Models;
 
@@ -337,29 +338,38 @@ namespace Project38CVsite.Controllers
         }
 
 
-        //
-        // GET: /Manage/ChangePassword
-        public ActionResult EditUser()
+        public ActionResult EditUser(string id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
         }
 
-        // Edit User Info
+        // POST: Projects/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  ActionResult EditUser( ApplicationUser model)
-        {          
+        public ActionResult EditUser(ApplicationUser user)
+        {
             if (ModelState.IsValid)
             {
-                db.Entry(model).State = EntityState.Modified;
+                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(model);
-            
+
+            return View(user);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

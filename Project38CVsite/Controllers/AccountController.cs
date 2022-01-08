@@ -139,40 +139,6 @@ namespace Project38CVsite.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult UploadImg()
-        {
-            return View();
-        }
-        // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult UploadImg(ApplicationUser usr)
-        {
-            string fileName = Path.GetFileNameWithoutExtension(usr.ImageFile.FileName);
-            string extension = Path.GetExtension(usr.ImageFile.FileName);
-            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            usr.ImagePath = "~/Image/" + fileName;
-            fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
-            usr.ImageFile.SaveAs(fileName);
-
-
-
-            using ( ApplicationDbContext db = new ApplicationDbContext())
-            {
-                db.Users.Add(usr);
-                db.SaveChanges();
-            }
-
-            ModelState.Clear();
-            return View();
-        }
-
-
-
-        //
-        // GET: /Account/Register
-        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();

@@ -144,9 +144,21 @@ namespace Project38CVsite.Models
 
     public class EditViewModel
     {
+        public string Id { get; set; }
+
         [Required]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
+        [Display(Name = "Education")]
+        public string Education { get; set; }
+
+        [Required]
+        [Display(Name = "Skill")]
+        public string Skill { get; set; }
+
+        [Required]
+        [Display(Name = "Experience")]
+        public string Experience { get; set; }
+
+
     }
     
 }
