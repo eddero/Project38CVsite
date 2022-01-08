@@ -347,33 +347,16 @@ namespace Project38CVsite.Controllers
         // Edit User Info
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  async Task<ActionResult> EditUser( ApplicationUser model)
-        {
-
-            var userId = User.Identity.GetUserId();
-            var user = UserManager.FindByIdAsync(userId);
-            
-            user.Result.FirstName = model.FirstName;
-            user.Result.LastName = model.LastName;
-            user.Result.Address = model.Address;
-            user.Result.Skill = model.Skill;
-            user.Result.Education = model.Education;
-            user.Result.Experience = model.Experience;
-            user.Result.IsPrivate = model.IsPrivate;
-
-
-            await UserManager.UpdateAsync(user.Result);
-
-            return RedirectToAction("Index");
-            /*
+        public  ActionResult EditUser( ApplicationUser model)
+        {          
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(user);
-            */
+            return View(model);
+            
         }
 
 #region Helpers
