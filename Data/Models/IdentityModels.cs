@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Web;
+using Data;
+using Data.Models;
 
 namespace Project38CVsite.Models
 {

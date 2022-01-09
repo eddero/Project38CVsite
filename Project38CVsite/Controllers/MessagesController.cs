@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Data.Models;
 using Microsoft.AspNet.Identity;
 using Project38CVsite.Models;
 
