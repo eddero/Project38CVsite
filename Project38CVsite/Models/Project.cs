@@ -9,6 +9,11 @@ namespace Project38CVsite.Models
 {
     public class Project
     {
+        public Project()
+        {
+            DateCreated = DateTime.Now;
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -25,6 +30,8 @@ namespace Project38CVsite.Models
         public string ManagerId { get; set; }
         [ForeignKey("ManagerId")]
         public ApplicationUser Manager { get; set; }
+
+        public DateTime? DateCreated { get; set; }
 
 
     }

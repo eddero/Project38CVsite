@@ -8,19 +8,6 @@ namespace Project38CVsite.Migrations
         public override void Up()
         {
            
-          
-          
-            CreateTable(
-                "dbo.AspNetUserLogins",
-                c => new
-                    {
-                        LoginProvider = c.String(nullable: false, maxLength: 128),
-                        ProviderKey = c.String(nullable: false, maxLength: 128),
-                        UserId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.Projects",
@@ -30,46 +17,13 @@ namespace Project38CVsite.Migrations
                         Title = c.String(nullable: false, maxLength: 1024),
                         Description = c.String(nullable: false, maxLength: 1024),
                         ManagerId = c.String(nullable: false, maxLength: 128),
+                        DateCreated = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.ManagerId)
                 .Index(t => t.ManagerId);
             
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
-            
-            CreateTable(
-                "dbo.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.UserProject",
-                c => new
-                    {
-                        ProjectRefId = c.Int(nullable: false),
-                        UserRefId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.ProjectRefId, t.UserRefId })
-                .ForeignKey("dbo.Projects", t => t.ProjectRefId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserRefId, cascadeDelete: true)
-                .Index(t => t.ProjectRefId)
-                .Index(t => t.UserRefId);
+           
             
         }
         

@@ -27,7 +27,7 @@ namespace Project38CVsite.Controllers
 
         public ActionResult Index1(string search)
         {
-            ViewData["Projects"] = db.projects.ToList().OrderByDescending(x => x.Title);
+            ViewData["Projects"] = db.projects.ToList().OrderByDescending(x => x.DateCreated);
 
            return View(db.Users.Where(x => x.FirstName.StartsWith(search) || search == null).ToList());
         }

@@ -36,7 +36,20 @@ namespace Project38CVsite.Controllers
 
             return Ok(message);
         }
-        
+
+        public IHttpActionResult GetString()
+        {
+            var userId = User.Identity.GetUserId();
+            var message = db.messages.Where(e => e.ToUserId == userId).ToList();
+            if (message == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(message);
+        }
+
+
         // PUT: api/Messages/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutMessage(int id, Message message)

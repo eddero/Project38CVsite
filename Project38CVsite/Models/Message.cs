@@ -17,8 +17,6 @@ namespace Project38CVsite.Models
         public string Content { get; set; }
         public bool IsRead { get; set; }
 
-        [Required]
-        [StringLength(1024)]
         public string FromName { get; set; }
 
         public string FromUserId { get; set; }
