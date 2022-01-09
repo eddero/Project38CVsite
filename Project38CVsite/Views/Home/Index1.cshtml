@@ -40,7 +40,6 @@
     }
     else
     {
-
         foreach (var item in Model)
         {
             if (User.Identity.IsAuthenticated)
@@ -65,7 +64,11 @@
             {
                 <tr>
                     <td>
+                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" width="150px" height="150px" />
+                        <p>FirstName:</p>
                         @Html.DisplayFor(modelItem => item.FirstName)
+                        <p>LastName:</p>
+                        @Html.DisplayFor(modelItem => item.LastName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.LastName)
@@ -84,11 +87,15 @@
     }
 </table>
 
-<h2>Projects</h2>
+<h2>Latest Projects Available</h2>
 
-@foreach (var item in (IEnumerable<Project38CVsite.Models.Project>)ViewData["Projects"])
-{
-    <ul>Project Title: @item.Title</ul>
-    <ul>Project Description: @item.Description</ul>
-
-}
+@Html.ActionLink("Join Projects", "Index","Projects")
+<table class="table">
+    @foreach (var item in (IEnumerable<Project38CVsite.Models.Project>)ViewData["Projects"])
+    {
+        <tr>
+            <td>Project Title: @item.Title</td>
+            <td>Project Description: @item.Description</td>
+        </tr>
+    }
+</table>

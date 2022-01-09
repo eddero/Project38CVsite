@@ -28,6 +28,7 @@ namespace Project38CVsite.Models
         public virtual ICollection<ApplicationUser> Participants { get; set; }
 
         public string ManagerId { get; set; }
+
         [ForeignKey("ManagerId")]
         public ApplicationUser Manager { get; set; }
 
