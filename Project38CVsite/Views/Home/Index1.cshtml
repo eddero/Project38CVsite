@@ -91,7 +91,7 @@
 
 @Html.ActionLink("Join Projects", "Index","Projects")
 <table class="table">
-    @foreach (var item in (IEnumerable<Project38CVsite.Models.Project>)ViewData["Projects"])
+    @foreach (var item in (IEnumerable<Data.Models.Project>)ViewData["Projects"])
     {
         <tr>
             <td>Project Title: @item.Title</td>
