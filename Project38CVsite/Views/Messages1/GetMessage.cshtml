@@ -7,42 +7,41 @@
 <h2>GetMessage</h2>
 
 <table class="table">
-    <tr>
-        <th>
-            <p>From User</p>
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FromName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsRead)
-        </th>
+    
 
-        <th></th>
-    </tr>
-
+    
 @foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.FromUser.FirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FromName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Content)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IsRead)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-</tr>
+    <tr>
+        @if (item.FromName == null)
+        {
+
+            <td>
+                <span>From Name/ User:</span>
+                @Html.DisplayFor(modelItem => item.FromUser.FirstName)
+            </td>
+
+        }
+        <td>
+            <span>From Name/ User:</span>
+            @Html.DisplayFor(modelItem => item.FromName)
+        </td>
+        <td>
+            <span>Content:</span>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+
+        <td>
+            <span>IsRead:</span>
+            @Html.DisplayFor(modelItem => item.IsRead)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+
+
+    </tr>
 }
 
 </table>
