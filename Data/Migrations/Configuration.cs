@@ -1,4 +1,4 @@
-namespace Project38CVsite.Migrations
+namespace Data.Migrations
 {
     using System;
     using System.Data.Entity;
