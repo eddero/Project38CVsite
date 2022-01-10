@@ -23,15 +23,7 @@
 }
 
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th></th>
-    </tr>
+
     @if (Model.Count() == 0)
     {
         <tr>
@@ -46,13 +38,19 @@
             {
                 <tr>
                     <td>
+                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" width="150px" height="150px" />
+                        <p></p>
+                        <span>Name:</span>
                         @Html.DisplayFor(modelItem => item.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    <td>
-                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" width="80px" height="50px" />
+                        <p></p>
+                        <span>Skill:</span>
+                        @Html.DisplayFor(modelItem => item.Skill)
+                        <p></p>
+                        <span>Experience:</span>
+                        @Html.DisplayFor(modelItem => item.Experience)
+                        <p></p>
+                        <span>Education:</span>
+                        @Html.DisplayFor(modelItem => item.Education)
                     </td>
                     <td>
                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
@@ -65,16 +63,18 @@
                 <tr>
                     <td>
                         <img src="@Html.DisplayFor(modelItem => item.ImagePath)" width="150px" height="150px" />
-                        <p>FirstName:</p>
+                        <p></p>
+                        <span>Name:</span>
                         @Html.DisplayFor(modelItem => item.FirstName)
-                        <p>LastName:</p>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    <td>
-                        <img src="@Html.DisplayFor(modelItem => item.ImagePath)" width="80px" height="50px" />
+                        <p></p>
+                        <span>Skill:</span>
+                        @Html.DisplayFor(modelItem => item.Skill)
+                        <p></p>
+                        <span>Experience:</span>
+                        @Html.DisplayFor(modelItem => item.Experience)
+                        <p></p>
+                        <span>Education:</span>
+                        @Html.DisplayFor(modelItem => item.Education)
                     </td>
                     <td>
                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
