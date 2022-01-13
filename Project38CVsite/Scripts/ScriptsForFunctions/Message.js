@@ -40,6 +40,9 @@ function SendMessageFromName() {
     objectMessage.ToUserId = $('#txtToUser').val();
     objectMessage.FromUserId = null;
     objectMessage.FromName = $('#txtFromName').val();
+    if (objectMessage.FromName == null) {
+        alert("hello")
+    }
 
     if (objectMessage) {
         $.ajax({

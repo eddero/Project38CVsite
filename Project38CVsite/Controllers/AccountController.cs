@@ -151,13 +151,16 @@ namespace Project38CVsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
-            string extension = Path.GetExtension(model.ImageFile.FileName);
-            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            model.ImagePath = "/Images/" + fileName;
-            fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
-            model.ImageFile.SaveAs(fileName);
+            if (model.ImageFile != null)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+                string extension = Path.GetExtension(model.ImageFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                model.ImagePath = "/Images/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                model.ImageFile.SaveAs(fileName);
 
+            }
 
             if (ModelState.IsValid)
             {
