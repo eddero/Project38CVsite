@@ -12,15 +12,12 @@
     
 @foreach (var item in Model) {
     <tr>
-        @if (item.FromName == null)
-        {
 
-            <td>
-                <span>From Name/ User:</span>
-                @Html.DisplayFor(modelItem => item.FromUser.FirstName)
-            </td>
+        <td>
+            <span>From Name/ User:</span>
+            @Html.DisplayFor(modelItem => item.FromUser.FirstName)
+        </td>
 
-        }
         <td>
             <span>From Name/ User:</span>
             @Html.DisplayFor(modelItem => item.FromName)
